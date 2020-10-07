@@ -3,7 +3,7 @@
     const $ = (selector) => document.querySelector(selector);
     const $$ = (selector) => document.querySelectorAll(selector);
 
-    setTimeout(init, 500);
+    document.addEventListener("DOMContentLoaded", init);
 
     function init() {
         handleClick();
