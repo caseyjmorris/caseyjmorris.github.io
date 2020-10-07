@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <title>Pronounceable password generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="zxcvbn.js"></script>
+    <script type="text/javascript" src="dictionaries.js"></script>
+    <script type="text/javascript" src="pronounceablePassword.js"></script>
+</head>
+<body style="display: none">
+<noscript>You cannot use this page without enabling JavaScript.</noscript>
+
+<h1>
+    Pronounceable (or not!) password generator
+</h1>
+
+<p>
+    This is a simple tool to generate a password you can pronounce (less so than when I started on "simple").
+    Since it runs in the browser, you don't need to trust
+    any server-side tool, and since the code is pretty short, you don't have to trust me.  You do have to trust your
+    browser's implementation of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues">
+    <code>Crypto.getRandomValues()</code></a> to shuffle the syllables properly though.
+</p>
+
+<p>
+    You have your choice of three strategies for pseudo-English words, pseudo-Japanese words, pass phrases, or classic
+    (gibberish) passwords.  If none of these quite scratch the itch, you can also paste your own list of words,
+    syllables, or characters by selecting "custom syllables" and these can be shuffled into passwords too.
+</p>
+
+<form id="preferences">
+    <h2>Preferences</h2>
+
+    <div class="form-control-group">
+        <label for="minimumLength">Minimum length</label>
+        <br>
+        <input type="number" id="minimumLength" min="1" max="500" value="12">
+    </div>
+
+
+    <div class="form-control-group">
+        <label>
+            Strategy
+        </label>
+
+        <br>
+
+        <span class="radio-group">
+            <input type="radio" name="strategy" id="strategy-linux-word-trigram" checked="checked">
+            <label for="strategy-linux-word-trigram">
+                Pseudo-English (Markov trigram)
+            </label>
+        </span>
+
+        <span class="radio-group">
+            <input type="radio" name="strategy" id="strategy-linux-word-digram">
+            <label for="strategy-linux-word-digram">
+                Pseudo-english (Markov digram)
+            </label>
+        </span>
+
+        <span class="radio-group">
+            <input type="radio" name="strategy" id="strategy-japanese">
+            <label for="strategy-japanese">Japanese syllabary</label>
+        </span>
+
+        <span class="radio-group">
+            <input type="radio" name="strategy" id="strategy-linux-word-parts">
+            <label for="strategy-linux-word-parts">
+                Pseudo-English (hyphenation algorithm)
+            </label>
+        </span>
+
+
+        <span class="radio-group">
+            <input type="radio" name="strategy" id="strategy-linux-word-whole">
+            <label for="strategy-linux-word-whole">
+                Whole words (longer min length strongly recommended)
+            </label>
+        </span>
+
+        <span class="radio-group">
+            <input type="radio" name="strategy" id="strategy-classic">
+            <label for="strategy-classic">
+                Classic password (not pronounceable)
+            </label>
+        </span>
+
+        <span class="radio-group">
+            <input type="radio" name="strategy" id="strategy-custom">
+            <label for="strategy-custom">
+                Custom syllables
+            </label>
+        </span>
+    </div>
+
+
+    <div id="syllables-region" class="form-control-group">
+        <label for="syllables">Syllables</label>
+        <br>
+        <textarea id="syllables" rows="20" cols="10">
+    </textarea>
+    </div>
+
+
+    <div class="form-control-group">
+        <label for="suffix">Static suffix (leave blank for none)</label><br>
+        <input type="text" name="suffix" id="suffix">
+    </div>
+
+
+    <div class="form-control-group">
+        <input type="checkbox" name="add-digit" id="add-digit" checked="checked"> <label for="add-digit">Add digit</label>
+    </div>
+
+
+    <div class="form-control-group">
+        <input type="checkbox" name="add-symbol" id="add-symbol" checked="checked"> <label for="add-symbol">Add symbol</label>
+    </div>
+
+    <div class="form-control-group">
+        <button type="button" id="generate">
+            Generate passwords!
+        </button>
+    </div>
+</form>
+
+<table id="password-table">
+    <thead>
+    <tr>
+        <th>
+            Strength
+        </th>
+        <th>
+            Password
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+    </thead>
+    <tbody id="password">
+
+    </tbody>
+</table>
+
+<hr>
+
+<p>
+    Resources used to build this page:
+</p>
+
+<ul>
+    <li><a href="https://users.cs.duke.edu/~ola/ap/linuxwords">Linux dictionary</a></li>
+    <li><a href="https://nedbatchelder.com/code/modules/hyphenate.py">Hyphenation script</a></li>
+    <li><a href="https://github.com/dropbox/zxcvbn">zxcvbn</a></li>
+</ul>
+</body>
+</html>

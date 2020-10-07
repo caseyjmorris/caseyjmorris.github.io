@@ -1,0 +1,117 @@
+.word-list {
+    display: none;
+}
+
+body {
+    font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 14pt;
+    padding: 16pt;
+}
+
+span.radio-group {
+    display: inline-block;
+}
+
+span.radio-group:hover {
+    background-color: #fff8e0;
+}
+
+form#preferences {
+    background-color: #e4f9ff;
+    padding: 16pt;
+}
+
+table#password-table {
+    border-spacing: 0;
+    border: none;
+    margin-top: 16pt;
+}
+
+td.rating-4 {
+    color: green;
+}
+
+td.rating-3 {
+    color: yellowgreen;
+}
+
+td.rating-2 {
+    color: yellow;
+}
+
+td.rating-1 {
+    color: orange;
+}
+
+td.rating-0 {
+    color: red;
+}
+
+td.rating {
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 1px;
+    font-weight: bold;
+}
+
+div.form-control-group {
+    margin-top: 12pt;
+}
+
+div.form-control-group:hover {
+    background-color: #eeeeee;
+}
+
+div.form-control-group input[type=text], div.form-control-group input[type=number] {
+    font-size: 14pt;
+}
+
+div.form-control-group > label:nth-child(1) {
+    font-weight: bolder;
+}
+
+div.form-control-group > label:nth-child(1)::after {
+    content: '\A';
+}
+
+tr.password:nth-child(2n) {
+    background-color: #fff8e0;
+}
+
+tr.password:hover {
+    background-color: #eeeeee;
+}
+
+
+table thead tr th{
+    border-bottom: 1px dotted #000000;
+    background-color: #e4f9ff;
+}
+
+table th {
+    padding: 14pt;
+    font-size: 16pt;
+    text-align: left;
+}
+
+tr.password > td {
+    padding: 14pt;
+    font-size: 16pt;
+}
+
+tr.password > td.password-value {
+
+    font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace, serif;
+}
+
+tr.password > td > button {
+    font-size: 14pt;
+}
+
+td.password-value {
+    word-break: break-all;
+}
+
+button#generate {
+    font-size: 16pt;
+}
